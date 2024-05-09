@@ -501,13 +501,13 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, pos.a.storage.local.get(key);
+                  return self.next = 2, chrome.storage.local.get(key); // pos.a.storage.local.get(key););
                 case 2:
                   return result = self.sent, n = result.backups, self.next = 6, pos.a.storage.local.clear();
                 case 6:
                   return self.next = 8, pos.a.storage.sync.clear();
                 case 8:
-                  return self.next = 10, pos.a.storage.local.set(Object(object.a)({}, key, n));
+                  return self.next = 10, chrome.storage.local.set(Object(object.a)({}, key, n)); //pos.a.storage.local.set((Object(object.a)({}, key, n)));
                 case 10:
                   console.log("Storage was reset");
                 case 11:
@@ -536,7 +536,8 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, pos.a.storage.local.get(cacheKey);
+                  // return self.next = 2, chrome.storage.local.get($1); // pos.a.storage.local.get($1););
+                  return self.next = 2, chrome.storage.local.get(cacheKey);
                 case 2:
                   return result = self.sent, n = result.snoozedTabs, self.abrupt("return", n || []);
                 case 5:
@@ -553,7 +554,7 @@
        * @return {?}
        */
       function set(opt_path) {
-        return pos.a.storage.local.set(Object(object.a)({}, cacheKey, opt_path));
+        return chrome.storage.local.set((Object(object.a)({}, cacheKey, opt_path))); // pos.a.storage.local.get((Object(object.a)({}, cacheKey, opt_path)));
       }
       var scripts = jQuery(1);
       var opts = jQuery.n(scripts);
@@ -591,14 +592,14 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, pos.a.storage.local.get();
+                  return self.next = 2, chrome.storage.local.get(); // pos.a.storage.local.get();
                 case 2:
                   return name = self.sent, self.next = 5, pos.a.storage.sync.get();
                 case 5:
                   return r = self.sent, e = name[key] || {}, delete name[key], e[event] = {
                     local : name,
                     sync : r
-                  }, self.next = 11, pos.a.storage.local.set(Object(object.a)({}, key, e));
+                  }, self.next = 11, chrome.storage.local.set((Object(object.a)({}, key, e))); // //pos.a.storage.local.set((Object(object.a)({}, key, e)));
                 case 11:
                   console.log('Backup complete to "'.concat(event, '"'));
                 case 12:
@@ -624,7 +625,7 @@
                 case 0:
                   return self.next = 2, next();
                 case 2:
-                  return self.next = 4, pos.a.storage.local.get(key);
+                  return self.next = 4, chrome.storage.local.get(key); // pos.a.storage.local.get(key);
                 case 4:
                   if (result = self.sent, n = result.backups, state = n[name]) {
                     /** @type {number} */
@@ -633,7 +634,7 @@
                   }
                   throw new Error("Couldnt find a backup with that name");;
                 case 9:
-                  return self.next = 11, pos.a.storage.local.set(state.local);
+                  return self.next = 11, chrome.storage.local.set((state.local)); //  //pos.a.storage.local.set((state.local));
                 case 11:
                   return self.next = 13, pos.a.storage.sync.set(state.sync);
                 case 13:
@@ -675,7 +676,7 @@
           for (;;) {
             switch(self.prev = self.next) {
               case 0:
-                return self.next = 2, pos.a.storage.local.get();
+                return self.next = 2, chrome.storage.local.get(); // pos.a.storage.local.get();
               case 2:
                 return e = self.sent, self.next = 5, pos.a.storage.sync.get();
               case 5:
@@ -737,7 +738,8 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, $.a.storage.local.get(name);
+                  // return self.next = 2, $.a.storage.local.get(name);
+                  return self.next = 2, chrome.storage.local.get(name);
                 case 2:
                   return page = self.sent, options = page.settings, self.abrupt("return", Object.assign({}, data, options));
                 case 5:
@@ -768,7 +770,10 @@
                 case 0:
                   return self.next = 2, cb();
                 case 2:
-                  return params = self.sent, options = Object.assign(params, options), self.abrupt("return", $.a.storage.local.set(Object(object.a)({}, name, options)));
+                  return params = self.sent, options = Object.assign(params, options), self.abrupt(
+                    "return", 
+                    chrome.storage.local.set(Object(object.a)({}, name, options)) // $.a.storage.local.set(Object(object.a)({}, name, options)
+                  );
                 case 5:
                 ;
                 case "end":
@@ -1344,7 +1349,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.storage.local.get([key, parent]);
+                  return self.next = 2, chrome.storage.local.get([key, parent]); // proxy.a.storage.local.get([key, parent]);
                 case 2:
                   if (attrs = self.sent, add = attrs.settings, remove = (remove = attrs.snoozeHistory) || [], void 0 !== (add = add || {}).newTodoSC) {
                     /** @type {number} */
@@ -1355,7 +1360,7 @@
                 case 9:
                   return delete add.showBadge, delete add.closeTabAfterSnooze, delete add.mailMyselfAddress, delete add.manyTabsThreshold, delete add.tabIdleTimeThreshold, delete add.newTodoSC, delete add.repeatLastSnoozeSC, delete add.showSnoozedTabsSC, delete add.snoozeCurrentTabSC, add.totalSnoozeCount = add.totalSnoozeCount || remove.length, self.next = 21, proxy.a.storage.local.remove(parent);
                 case 21:
-                  return self.next = 23, proxy.a.storage.local.set(Object(actual.a)({}, key, add));
+                  return self.next = 23, chrome.storage.local.set((Object(actual.a)({}, key, add))); //  //proxy.a.storage.local.set((Object(actual.a)({}, key, add)));
                 case 23:
                 ;
                 case "end":
@@ -1382,7 +1387,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.storage.local.get(cacheKey);
+                  return self.next = 2, chrome.storage.local.get(cacheKey); // proxy.a.storage.local.get(cacheKey);
                 case 2:
                   if (result = self.sent, null == (n = result.snoozedTabs)) {
                     /** @type {number} */
@@ -1402,7 +1407,7 @@
                 case 12:
                   n = self.sent;
                 case 13:
-                  return self.next = 15, proxy.a.storage.local.set(Object(actual.a)({}, cacheKey, n));
+                  return self.next = 15, chrome.storage.local.set((Object(actual.a)({}, cacheKey, n))); //  //proxy.a.storage.local.set((Object(actual.a)({}, cacheKey, n)));
                 case 15:
                 ;
                 case "end":
@@ -1432,7 +1437,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, $templateCache.get();
+                  return self.next = 2, chrome.storage.local.get(); // $templateCache.get();
                 case 2:
                   if (obj = self.sent, args = [], len2 = obj.tabsCount || 0) {
                     /** @type {number} */
@@ -1468,7 +1473,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.storage.local.get(cacheKey);
+                  return self.next = 2, chrome.storage.local.get(cacheKey); // proxy.a.storage.local.get(cacheKey);
                 case 2:
                   return options = self.sent, (_base = (_base = (_base = options.snoozedTabs) || []).filter(function($location) {
                     return null != $location.url;
@@ -1480,7 +1485,7 @@
                         delete data.period.time;
                       }
                     }
-                  }), self.next = 9, proxy.a.storage.local.set(Object(actual.a)({}, cacheKey, _base));
+                  }), self.next = 9, chrome.storage.local.set((Object(actual.a)({}, cacheKey, _base))); //  //proxy.a.storage.local.set((Object(actual.a)({}, cacheKey, _base)));
                 case 9:
                 ;
                 case "end":
@@ -1525,7 +1530,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.storage.local.get(storageKey);
+                  return self.next = 2, chrome.storage.local.get(storageKey); // proxy.a.storage.local.get(storageKey);
                 case 2:
                   fn = self.sent;
                   deps = null != (deps = fn.lastMigrationIndex) ? deps : -1;
@@ -1539,7 +1544,7 @@
                   }
                   return property = codeSegments[i], self.prev = 9, console.log("Performing migration ".concat(i)), self.next = 13, property();
                 case 13:
-                  return self.next = 15, proxy.a.storage.local.set(Object(actual.a)({}, storageKey, i));
+                  return self.next = 15, chrome.storage.local.set((Object(actual.a)({}, storageKey, i))); //  //proxy.a.storage.local.set((Object(actual.a)({}, storageKey, i)));
                 case 15:
                   /** @type {number} */
                   self.next = 21;
