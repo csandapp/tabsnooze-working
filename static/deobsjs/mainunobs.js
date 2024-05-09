@@ -505,7 +505,7 @@
                 case 2:
                   return result = self.sent, n = result.backups, self.next = 6, pos.a.storage.local.clear();
                 case 6:
-                  return self.next = 8, pos.a.storage.sync.clear();
+                  return self.next = 8, chromepos // pos.a.storage.sync.clear();
                 case 8:
                   return self.next = 10, chrome.storage.local.set(Object(object.a)({}, key, n)); //pos.a.storage.local.set((Object(object.a)({}, key, n)));
                 case 10:
@@ -1358,7 +1358,11 @@
                   }
                   return self.abrupt("return");
                 case 9:
-                  return delete add.showBadge, delete add.closeTabAfterSnooze, delete add.mailMyselfAddress, delete add.manyTabsThreshold, delete add.tabIdleTimeThreshold, delete add.newTodoSC, delete add.repeatLastSnoozeSC, delete add.showSnoozedTabsSC, delete add.snoozeCurrentTabSC, add.totalSnoozeCount = add.totalSnoozeCount || remove.length, self.next = 21, proxy.a.storage.local.remove(parent);
+                  return delete add.showBadge,
+                    delete add.closeTabAfterSnooze,
+                    delete add.mailMyselfAddress,
+                    delete add.manyTabsThreshold, delete add.tabIdleTimeThreshold, delete add.newTodoSC, delete add.repeatLastSnoozeSC, delete add.showSnoozedTabsSC, delete add.snoozeCurrentTabSC, add.totalSnoozeCount = add.totalSnoozeCount || remove.length, self.next = 21, 
+                    chrome.storage.local.remove(parent); // proxy.a.storage.local.remove(parent);
                 case 21:
                   return self.next = 23, chrome.storage.local.set((Object(actual.a)({}, key, add))); //  //proxy.a.storage.local.set((Object(actual.a)({}, key, add)));
                 case 23:
@@ -1396,14 +1400,14 @@
                   }
                   return self.abrupt("return");
                 case 6:
-                  return self.next = 8, children(proxy.a.storage.sync);
+                  return self.next = 8, children(chrome.storage.sync); //children(proxy.a.storage.sync);
                 case 8:
                   if (0 !== (n = self.sent).length) {
                     /** @type {number} */
                     self.next = 13;
                     break;
                   }
-                  return self.next = 12, children(proxy.a.storage.local);
+                  return self.next = 12, children(chrome.storage.local); // proxy.a.storage.local);
                 case 12:
                   n = self.sent;
                 case 13:
@@ -1610,7 +1614,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.notifications.create("", {
+                  return self.next = 2, chrome.notifications.create("", { // proxy.a.notifications.create("", {
                     type : "basic",
                     title : "Tab Snooze ".concat(options.a, " installed"),
                     message : "Click to open the changelog",
@@ -2502,7 +2506,7 @@
        * @return {?}
        */
       function update() {
-        return q.a.alarms.clear(key);
+        return chrome.alarms.clear(key); // q.a.alarms.clear(key);
       }
       /**
        * @return {undefined}
@@ -4122,7 +4126,7 @@
        */
       function initialize(paths, color) {
         return Promise.all(paths.map(function(req) {
-          return proxy.a.tabs.create({
+          return chrome.tabs.create({ // proxy.a.tabs.create({
             url : req.url,
             active : color
           });
@@ -4147,7 +4151,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.windows.create({
+                  return self.next = 2, chrome.windows.create({ // proxy.a.windows.create({
                     type : "popup",
                     state : "normal",
                     url : o.a + code,
@@ -4159,7 +4163,7 @@
                   });
                 case 2:
                   item = self.sent;
-                  proxy.a.windows.update(item.id, {
+                  chrome.windows.update(item.id, { // proxy.a.windows.update(item.id, {
                     focused : true
                   });
                 case 4:
@@ -4188,13 +4192,13 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return url.startsWith("http") || (url = o.a + url), self.next = 3, proxy.a.tabs.create({
+                  return url.startsWith("http") || (url = o.a + url), self.next = 3, chrome.tabs.create({ // proxy.a.tabs.create({
                     url : url,
                     active : true
                   });
                 case 3:
                   tab = self.sent;
-                  proxy.a.windows.update(tab.windowId, {
+                  chrome.windows.update(tab.windowId, { // proxy.a.windows.update(tab.windowId, {
                     focused : true
                   });
                 case 5:
@@ -4246,7 +4250,7 @@
                   self.prev = 11;
                   self.t0 = self.catch(5);
                 case 13:
-                  return options || (options = "images/extension_icon_128.png"), self.next = 16, proxy.a.notifications.create("", {
+                  return options || (options = "images/extension_icon_128.png"), self.next = 16, chrome.notifications.create("", { // proxy.a.notifications.create("", {
                     type : "basic",
                     title : fmt,
                     message : output,
@@ -4256,13 +4260,13 @@
                   last = self.sent;
                   chrome.notifications.onClicked.addListener(function loop(index) {
                     if (index === last) {
-                      proxy.a.tabs.update(chunk.id, {
+                      chrome.tabs.update(chunk.id, { // proxy.a.tabs.update(chunk.id, {
                         active : true
                       });
-                      proxy.a.windows.update(chunk.windowId, {
+                      chrome.windows.update(chunk.windowId, { // proxy.a.windows.update(chunk.windowId, {
                         focused : true
                       });
-                      proxy.a.notifications.clear(last);
+                      chrome.notifications.clear(last); // proxy.a.notifications.clear(last);
                       chrome.notifications.onClicked.removeListener(loop);
                     }
                   });
@@ -4299,7 +4303,7 @@
             for (;;) {
               switch(self.prev = self.next) {
                 case 0:
-                  return self.next = 2, proxy.a.tabs.query({
+                  return self.next = 2, chrome.tabs.query({ // proxy.a.tabs.query({
                     active : true,
                     currentWindow : true
                   });
