@@ -503,9 +503,9 @@
                 case 0:
                   return self.next = 2, chrome.storage.local.get(key); // pos.a.storage.local.get(key););
                 case 2:
-                  return result = self.sent, n = result.backups, self.next = 6, pos.a.storage.local.clear();
+                  return result = self.sent, n = result.backups, self.next = 6, chrome.storage.local.clear(); // pos.a.storage.local.clear();
                 case 6:
-                  return self.next = 8, chromepos // pos.a.storage.sync.clear();
+                  return self.next = 8, chrome.storage.sync.clear(); // pos.a.storage.sync.clear();
                 case 8:
                   return self.next = 10, chrome.storage.local.set(Object(object.a)({}, key, n)); //pos.a.storage.local.set((Object(object.a)({}, key, n)));
                 case 10:
@@ -594,7 +594,7 @@
                 case 0:
                   return self.next = 2, chrome.storage.local.get(); // pos.a.storage.local.get();
                 case 2:
-                  return name = self.sent, self.next = 5, pos.a.storage.sync.get();
+                  return name = self.sent, self.next = 5, chrome.storage.sync.get(); // pos.a.storage.sync.get();
                 case 5:
                   return r = self.sent, e = name[key] || {}, delete name[key], e[event] = {
                     local : name,
@@ -636,7 +636,7 @@
                 case 9:
                   return self.next = 11, chrome.storage.local.set((state.local)); //  //pos.a.storage.local.set((state.local));
                 case 11:
-                  return self.next = 13, pos.a.storage.sync.set(state.sync);
+                  return self.next = 13, chrome.storage.sync.set(state.sync); // pos.a.storage.sync.set(state.sync);
                 case 13:
                   console.log('Backup "'.concat(name, '" restored'));
                 case 14:
@@ -658,7 +658,7 @@
           for (;;) {
             switch(current.prev = current.next) {
               case 0:
-                return current.next = 2, pos.a.storage.local.remove(key);
+                return current.next = 2, chrome.storage.local.remove(key); // pos.a.storage.local.remove(key);
               case 2:
                 console.log("Backups deleted");
               case 3:
@@ -678,7 +678,7 @@
               case 0:
                 return self.next = 2, chrome.storage.local.get(); // pos.a.storage.local.get();
               case 2:
-                return e = self.sent, self.next = 5, pos.a.storage.sync.get();
+                return e = self.sent, self.next = 5, chrome.storage.sync.get(); // pos.a.storage.sync.get();
               case 5:
                 n = self.sent;
                 console.log("localStorage: ", e);
