@@ -2,9 +2,9 @@
 "update_url": "https://clients2.google.com/service/update2/crx",
 
   "manifest_version": 2,
-  "name": "Tab Snooze",
+  "name": "Tab Snooze - Works as of Nov 7 2021",
   "short_name": "Tab Snooze",
-  "version": "2.0.17",
+  "version": "11.7.21",
 
   "description": "Save articles, videos and todos for later. They'll magically reopen when you need them.",
   "icons": { "128": "images/extension_icon_128.png" },
@@ -16,8 +16,7 @@
     "alarms",
     "storage",
     "notifications",
-    "idle",
-    "<all_urls>"
+    "idle"
   ],
 
   "web_accessible_resources": ["images/*", "fonts/*", "sounds/*"],
