@@ -31,7 +31,7 @@
   },
   "options_page": "indexunobs.html#options/settings",
   "background": {
-    "service_worker": "src/background.js",
+    "service_worker": "src/background.index.js",  // imports don't seem to work in src/background.index.js even when files definitely exist
     "type": "module"
   },
   "commands": {
